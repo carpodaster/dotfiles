@@ -1,0 +1,23 @@
+filetype on  " Automatically detect file types.
+set nocompatible
+set nobackup
+syntax enable
+
+" Formatting (some of these are for coding in C and C++)
+set ts=2  " Tabs are 2 spaces
+set bs=2  " Backspace over everything in insert mode
+set shiftwidth=2  " Tabs under smart indent
+set autoindent
+set smarttab
+set expandtab
+set nocp incsearch
+set cinwords=if,else,while,do,for,switch,case
+
+set ruler  " Ruler on
+set nu  " Line numbers on
+set nowrap  " Line wrapping off
+
+
+" Visual
+set showmatch  " Show matching brackets.
+
