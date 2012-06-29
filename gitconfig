@@ -12,5 +12,6 @@
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lala = log --graph --decorate --pretty=format:'\"%C(yellow)%h %Cred%cr %Cgreen[%aN]%C(blue)%d%Creset %s' --abbrev-commit --all
   ls = ls-files
 
