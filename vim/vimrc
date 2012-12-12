@@ -30,6 +30,9 @@ if has("autocmd")
   filetype indent on
 endif
 
+" http://stackoverflow.com/questions/1327978/sorting-words-not-lines-in-vim
+vnoremap <C-s> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
+
 " http://vimcasts.org/episodes/tidying-whitespace/"
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
