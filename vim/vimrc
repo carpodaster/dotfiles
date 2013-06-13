@@ -47,3 +47,6 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre *.rb,*.erb,*.py,*.js :call <SID>StripTrailingWhitespaces()
 
+hi TabLineFill ctermfg=Black ctermbg=White
+hi TabLine ctermfg=LightBlue ctermbg=Black
+hi TabLineSel ctermfg=White ctermbg=Blue
