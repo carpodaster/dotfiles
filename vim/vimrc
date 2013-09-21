@@ -54,3 +54,7 @@ call pathogen#infect()
 hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
+
+" Rspec stuff
+map ,t  :!rspec %<CR>
+map ,zr :!zeus rspec %<CR>
