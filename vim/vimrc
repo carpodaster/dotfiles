@@ -1,6 +1,8 @@
 " Plugins used:
 " rails, autoclose, endwise
 
+colorscheme codeschool
+
 filetype on  " Automatically detect file types.
 set nocompatible
 set nobackup
