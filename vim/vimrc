@@ -47,7 +47,7 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
-autocmd BufWritePre *.rb,*.erb,*.py,*.js :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.haml,*.coffee,*.rake,*.md :call <SID>StripTrailingWhitespaces()
 
 call pathogen#infect()
 
