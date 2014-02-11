@@ -85,4 +85,6 @@ hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
 
+map <Leader>h <Esc>:call ToggleHardMode()<CR>
+
 map <Leader>r :w\|:!ruby %<CR>
