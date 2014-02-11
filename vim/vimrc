@@ -52,6 +52,30 @@ endfunction
 autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.haml,*.coffee,*.rake,*.md :call <SID>StripTrailingWhitespaces()
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 
+" -------------------------------------------------
+" Ruby TDD related stuff
+function! RSpecCurrent()
+  execute("!rspec " . expand("%p") . ":" . line("."))
+endfunction
+
+function! RSpecZeus()
+  execute("!zeus rspec " . expand("%p"))
+endfunction
+
+function! RSpecZeusLine()
+  execute("!zeus rspec " . expand("%p") . ":" . line("."))
+endfunction
+
+" TODO: check if it needs to be run with rspec or ruby -Itest
+map <Leader>t :w\|:!rspec %<CR>
+" mt, think 'minitest'
+map <Leader>mt :w\|:!ruby -Itest %<CR>
+
+map <Leader>T :call RSpecCurrent()<CR>
+map <Leader>zr :call RSpecZeus()<CR>
+map <Leader>ZR :call RSpecZeusLine()<CR>
+" -------------------------------------------------
+
 call pathogen#infect()
 
 set colorcolumn=233
@@ -61,7 +85,4 @@ hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
 
-" Rspec stuff
-map ,t  :!rspec %<CR>
-map ,zr :!zeus rspec %<CR>
 map <Leader>r :w\|:!ruby %<CR>
