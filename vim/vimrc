@@ -64,3 +64,4 @@ hi TabLineSel ctermfg=White ctermbg=Blue
 " Rspec stuff
 map ,t  :!rspec %<CR>
 map ,zr :!zeus rspec %<CR>
+map <Leader>r :w\|:!ruby %<CR>
