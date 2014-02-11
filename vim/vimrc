@@ -52,6 +52,9 @@ autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 
 call pathogen#infect()
 
+set colorcolumn=233
+hi ColorColumn ctermfg=NONE ctermbg=234 cterm=NONE
+
 hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
