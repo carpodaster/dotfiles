@@ -32,6 +32,8 @@ if has("autocmd")
   filetype indent on
 endif
 
+let mapleader = ","
+
 " http://stackoverflow.com/questions/1327978/sorting-words-not-lines-in-vim
 vnoremap <C-s> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
 
