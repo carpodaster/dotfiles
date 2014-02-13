@@ -1,3 +1,69 @@
+" ------------------------------------------
+" Setting up Vundle - the vim plugin bundler
+" ------------------------------------------
+
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+
+if !filereadable(vundle_readme)
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+  let iCanHazVundle=0
+endif
+
+"-------------------------------------------
+ 
+if has("gui_macvim")
+  set guioptions-=T "if using a GUI Version
+endif
+
+"---------------
+" VUNDLE CONFIG
+"---------------
+
+set nocompatible " be iMproved
+filetype off " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" Rails related
+Bundle 'tpope/vim-rails.git'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-endwise'
+Bundle 'kchmck/vim-coffee-script'
+" Colorscheme
+Bundle '29decibel/codeschool-vim-theme'
+" Workflow
+Bundle 'roman/golden-ratio'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-surround'
+Bundle 'wikitopian/hardmode'
+Bundle 'benmills/vimux'
+Bundle 'jingweno/vimux-zeus'
+" css
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'groenewege/vim-less'
+" GIT
+Bundle 'tpope/vim-fugitive'
+
+filetype plugin indent on " required!
+
+" -----------------------
+" BASIC VIM CONFIGURATION
+" -----------------------
+
 " Plugins used:
 " rails, autoclose, endwise
 
@@ -75,8 +141,6 @@ map <Leader>T :call RSpecCurrent()<CR>
 map <Leader>zr :call RSpecZeus()<CR>
 map <Leader>ZR :call RSpecZeusLine()<CR>
 " -------------------------------------------------
-
-call pathogen#infect()
 
 set colorcolumn=233
 hi ColorColumn ctermfg=NONE ctermbg=234 cterm=NONE
