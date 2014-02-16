@@ -44,8 +44,6 @@ Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-endwise'
 Bundle 'kchmck/vim-coffee-script'
-" Colorscheme
-Bundle '29decibel/codeschool-vim-theme'
 " Workflow
 Bundle 'roman/golden-ratio'
 Bundle 'tomtom/tcomment_vim'
@@ -70,8 +68,6 @@ filetype plugin indent on " required!
 
 " Plugins used:
 " rails, autoclose, endwise
-
-colorscheme codeschool
 
 filetype on  " Automatically detect file types.
 set nocompatible
@@ -176,9 +172,10 @@ let g:rails_projections = {
 
 " -------------------------------------------------
 
+" TODO move customisation into carpschool colorscheme
+colorscheme carpschool
 set colorcolumn=233
 hi ColorColumn ctermfg=NONE ctermbg=234 cterm=NONE
-
 hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
