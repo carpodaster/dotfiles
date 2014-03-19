@@ -166,7 +166,7 @@ let g:rails_projections = {
       \  "app/presenters/*.rb": {
       \    "command": "presenter",
       \    "template":
-      \      "class $S < BasePresenter\nend",
+      \      "class %S < BasePresenter\nend",
       \      "test": [
       \        "spec/presenters/%s_spec.rb"
       \      ]
