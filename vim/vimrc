@@ -3,18 +3,14 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " ------------------------------------------
-" Setting up Vundle - the vim plugin bundler
+" Setting up NeoBundle
 " ------------------------------------------
 
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+set nocompatible " be iMproved
 
-if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-  let iCanHazVundle=0
+if has('vim_starting')
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 "-------------------------------------------
@@ -23,42 +19,46 @@ if has("gui_macvim")
   set guioptions-=T "if using a GUI Version
 endif
 
-"---------------
-" VUNDLE CONFIG
-"---------------
+"-----------------
+" NeoBundle Config
+"-----------------
 
-set nocompatible " be iMproved
-filetype off " required!
+" Required:
+call neobundle#rc(expand('~/.vim/bundle/'))
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+NeoBundle 'gmarik/vundle'
 
 " Rails related
-Bundle 'tpope/vim-rails.git'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-endwise'
-Bundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'thoughtbot/vim-rspec'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'kchmck/vim-coffee-script'
 " Workflow
-Bundle 'roman/golden-ratio'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
-Bundle 'wikitopian/hardmode'
-Bundle 'benmills/vimux'
-Bundle 'jingweno/vimux-zeus'
+NeoBundle 'roman/golden-ratio'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'wikitopian/hardmode'
+NeoBundle 'benmills/vimux'
+NeoBundle 'jingweno/vimux-zeus'
 " css
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'groenewege/vim-less'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'groenewege/vim-less'
 " GIT
-Bundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin indent on " required!
 
