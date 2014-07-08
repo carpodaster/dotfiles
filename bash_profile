@@ -15,3 +15,17 @@ export PS1='\h:\W \u \[\033[0;36m\]$(__git_ps1 "[%s] ")\[\033[0m\]\$ '
 # coloured output and better readability on black terminal background
 export LSCOLORS=hefxcxdxbxegedabagacad
 alias ls='ls -G'
+
+# Helper functions for teh lazyness!1
+rgrep() {
+  # TODO support -l for file list
+  grep -R$2 "$1" app lib spec $3 $4 $5 $6 $7 |grep -v Binary
+}
+
+production_console() {
+  heroku run rails console -r production
+}
+
+generate_password() {
+  pwgen -n -c -1 -s -y $1
+}
