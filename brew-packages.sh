@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+
+brew update             && \
+brew tap nviennot/tmate && \
+brew install tmate
+
 brew install git vim bash-completion pwgen imagemagick mutt postgres
+
 
 echo
 echo Postinstall:
