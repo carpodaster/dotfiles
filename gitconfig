@@ -20,3 +20,5 @@
 
 [push]
   default = matching
+[user]
+  email = cz@aegisnet.de
