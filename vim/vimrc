@@ -19,46 +19,38 @@ if has("gui_macvim")
   set guioptions-=T "if using a GUI Version
 endif
 
-"-----------------
-" NeoBundle Config
-"-----------------
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Required:
-call neobundle#rc(expand('~/.vim/bundle/'))
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
-" let Vundle manage Vundle
-" required!
-NeoBundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle'
 
 " Rails related
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'thoughtbot/vim-rspec'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-rails.git'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-endwise'
+Plugin 'kchmck/vim-coffee-script'
 " Workflow
-NeoBundle 'roman/golden-ratio'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'wikitopian/hardmode'
-NeoBundle 'benmills/vimux'
-NeoBundle 'jingweno/vimux-zeus'
+Plugin 'roman/golden-ratio'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'wikitopian/hardmode'
+Plugin 'benmills/vimux'
+Plugin 'jingweno/vimux-zeus'
 " css
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'groenewege/vim-less'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'groenewege/vim-less'
 " GIT
-NeoBundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 
 filetype plugin indent on " required!
 
