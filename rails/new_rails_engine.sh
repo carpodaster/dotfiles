@@ -8,6 +8,8 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 engine_name=$1
 rails_version=`rails -v |head -n1 |awk '{print $2}'`
+ruby_version_full=`ruby -v |awk '{print $2}'`
+ruby_version=${ruby_version_full:0:5}
 
 if [[ -z $engine_name ]]; then
   echo "E: Must supply engine name."
@@ -44,7 +46,8 @@ git_email=$(git config user.email)
 
 # Create gemsets
 rvm gemset use $engine_name --create
-echo $engine_name >> .ruby-gemset
+echo -n $ruby_version > .ruby-version
+echo -n $engine_name > .ruby-gemset
 
 # Tweak gemspec
 cat ${engine_name}.gemspec |sed -e 's/end$/  s.add_development_dependency "rspec-rails"\
