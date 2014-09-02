@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Usage:
+# $ bash <(curl https://raw.githubusercontent.com/carpodaster/dotfiles/master/rails/new_rails_engine.sh) ENGINENAME
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
