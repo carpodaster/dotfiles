@@ -58,3 +58,16 @@ mv -f ${engine_name}.gemspec.tmp ${engine_name}.gemspec
 
 bundle
 
+# Add rpsec
+rspec --init
+
+cat >> Rakefile <<-EORAKE
+
+require 'rspec/core'
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task default: :spec
+EORAKE
+
