@@ -38,7 +38,7 @@ rails plugin new \
 cd $engine_name
 
 # Le git
-# git init .
+git init .
 
 # Create gemsets
 rvm gemset use $engine_name --create
