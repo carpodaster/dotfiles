@@ -4,7 +4,7 @@ brew update             && \
 brew tap nviennot/tmate && \
 brew install tmate
 
-brew install git vim bash-completion pwgen imagemagick mutt postgres
+brew install git vim bash-completion pwgen imagemagick mutt postgres elinks
 
 
 echo
