@@ -43,6 +43,8 @@ cd $engine_name
 git init .
 git_name=$(git config user.name)
 git_email=$(git config user.email)
+echo 'spec/dummy/log/*.log' >> .gitignore
+echo 'spec/dummy/tmp/*' >> .gitignore
 
 # Create gemsets
 rvm gemset use $engine_name --create
