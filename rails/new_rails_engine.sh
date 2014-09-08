@@ -54,9 +54,13 @@ echo -n $engine_name > .ruby-gemset
 # Tweak gemspec
 cat ${engine_name}.gemspec |sed -e 's/end$/  s.add_development_dependency "rspec-rails"\
 end/' | sed -e "s/  s\.add_dependency \"rails\", \"~>.*/  s.add_dependency \"rails\", \">= ${rails_version}\", \"< 5.0\"/" | \
+sed -e "s/README\.rdoc/README.md/" | \
 sed -e "s/TODO: Your name/${git_name}/" | sed -e "s/TODO: Your email/${git_email}/" > ${engine_name}.gemspec.tmp
 
 mv -f ${engine_name}.gemspec.tmp ${engine_name}.gemspec
+
+# "Convert" README to markdown
+sed -e "s/^= /# /" < README.rdoc > README.md && rm README.rdoc
 
 bundle
 
