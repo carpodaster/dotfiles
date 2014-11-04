@@ -65,7 +65,7 @@ sed -e "s/^= /# /" < README.rdoc > README.md && rm README.rdoc
 bundle
 
 # Add rpsec
-rspec --init
+rails g rspec:install
 
 cat >> Rakefile <<-EORAKE
 
