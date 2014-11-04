@@ -35,6 +35,8 @@ rails plugin new \
   --skip-bundle \
   --skip-spring \
   --mountable \
+  --full \
+  --dummy-path=spec/dummy \
   $engine_name
 
 cd $engine_name
