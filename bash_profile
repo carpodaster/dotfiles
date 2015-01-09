@@ -18,11 +18,14 @@ alias ls='ls -G'
 
 # Helper functions for teh lazyness!1
 rgrep() {
+  directories="app lib spec"
+  if [ -d "test" ]; then
+    directories="${directories} test"
+  fi
   if [ "$1" == "-l" ]; then
-    # Filelist, e.g. to feed an arglist to vim: `vim $(rgrep -l Foobar)`
-    grep -Rl$3 "$2" app lib spec $4 $5 $6 $7 $8 |grep -v Binary
+    grep -Rl$3 "$2" $directories $4 $5 $6 $7 $8 |grep -v Binary
   else
-    grep -R$2 "$1" app lib spec $3 $4 $5 $6 $7  |grep -v Binary
+    grep -R$2  "$1" $directories $3 $4 $5 $6 $7  |grep -v Binary
   fi
 }
 
