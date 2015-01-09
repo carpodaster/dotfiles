@@ -18,8 +18,12 @@ alias ls='ls -G'
 
 # Helper functions for teh lazyness!1
 rgrep() {
-  # TODO support -l for file list
-  grep -R$2 "$1" app lib spec $3 $4 $5 $6 $7 |grep -v Binary
+  if [ "$1" == "-l" ]; then
+    # Filelist, e.g. to feed an arglist to vim: `vim $(rgrep -l Foobar)`
+    grep -Rl$3 "$2" app lib spec $4 $5 $6 $7 $8 |grep -v Binary
+  else
+    grep -R$2 "$1" app lib spec $3 $4 $5 $6 $7  |grep -v Binary
+  fi
 }
 
 production_console() {
