@@ -25,7 +25,8 @@ sudo apt-get install \
 	ca-certificates \
 	postgresql-9.4 \
 	libpq-dev \
-	kismet 
+	kismet \
+	keepassx
 
 exit
 
