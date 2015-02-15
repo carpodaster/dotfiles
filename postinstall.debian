@@ -27,9 +27,9 @@ sudo apt-get install \
 	libpq-dev \
 	kismet \
 	keepassx \
-  libv8-dev
-
-exit
+  libv8-dev \
+  libcurl4-openssl-dev \
+  htop
 
 # RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
