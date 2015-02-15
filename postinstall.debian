@@ -26,7 +26,8 @@ sudo apt-get install \
 	postgresql-9.4 \
 	libpq-dev \
 	kismet \
-	keepassx
+	keepassx \
+  libv8-dev
 
 exit
 
