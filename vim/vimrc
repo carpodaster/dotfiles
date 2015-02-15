@@ -42,8 +42,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'wikitopian/hardmode'
-Plugin 'benmills/vimux'
-Plugin 'jingweno/vimux-zeus'
 " css
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
