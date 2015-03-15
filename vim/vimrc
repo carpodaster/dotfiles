@@ -27,7 +27,8 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 " Rails related
-Plugin 'tpope/vim-rails.git'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-haml'
