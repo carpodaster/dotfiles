@@ -190,5 +190,8 @@ map <Leader>gs :Gstatus<CR>
 " repeat last command for visual selection by pressing .
 xnoremap . :norm.<CR>
 
+" OS X has modelines disabled by default?
+set modelines=5
+
 " I keep typing :W when I meant :w
 cnoreabbrev <expr> W getcmdtype()==':'&&getcmdline()=~#'^W'?'w':'W'
