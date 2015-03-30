@@ -147,11 +147,10 @@ map <Leader>SR :call RSpecSpringLine()<CR>
 let g:rails_projections = {
       \  "app/services/*.rb": {
       \    "command": "service",
-      \    "template":
-      \      "class %S\nend",
-      \      "test": [
-      \        "spec/services/%s_spec.rb"
-      \      ]
+      \    "template": "class %S\nend",
+      \    "test": [ "spec/services/%s_spec.rb" ],
+      \    "alternate": "spec/services/%s_spec.rb" ,
+      \    "affinity": "model"
       \  },
       \  "app/middleware/*.rb": {
       \    "command": "middleware",
@@ -163,11 +162,9 @@ let g:rails_projections = {
       \  },
       \  "app/presenters/*.rb": {
       \    "command": "presenter",
-      \    "template":
-      \      "class %S < BasePresenter\nend",
-      \      "test": [
-      \        "spec/presenters/%s_spec.rb"
-      \      ]
+      \    "template": "class %S < BasePresenter\nend",
+      \    "test": [ "spec/presenters/%s_spec.rb" ],
+      \    "affinity": "model"
       \  },
       \  "lib/base_presenter.rb": {"command": "presenter"},
       \  "spec/services/*_spec.rb": {
