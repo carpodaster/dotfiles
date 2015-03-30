@@ -169,7 +169,14 @@ let g:rails_projections = {
       \        "spec/presenters/%s_spec.rb"
       \      ]
       \  },
-      \  "lib/base_presenter.rb": {"command": "presenter"}
+      \  "lib/base_presenter.rb": {"command": "presenter"},
+      \  "spec/services/*_spec.rb": {
+      \    "command": "servicetest",
+      \    "template":
+      \      "RSpec.describe %S do\n\n  describe \"its constructor\" do\n    pending 'FIXME: implement this example'\n  end\n\nend",
+      \    "alternate": "app/services/%s.rb",
+      \    "keywords": "describe context subject skip pending"
+      \  }
       \}
 
 " -------------------------------------------------
