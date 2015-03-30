@@ -18,7 +18,7 @@ alias ls='ls -G'
 
 # Helper functions for teh lazyness!1
 rgrep() {
-  directories="app lib spec"
+  directories="app lib spec config"
   if [ -d "test" ]; then
     directories="${directories} test"
   fi
