@@ -60,7 +60,7 @@ fi
 
 if [ $mode = "radeon_bl1" ]; then
   radeon_maxbr=$(cat "$SYSBL/max_brightness")
-  # translate gnome brightness to percentage value for radeon_bl1
+  # translate gnome brightness to 1..255 value for radeon_bl1
   radeonbr=$(echo "scale=0; ($br * $radeon_maxbr) / $maxbr" | bc -q )
   echo $radeonbr > $SYSBL/brightness
 fi
