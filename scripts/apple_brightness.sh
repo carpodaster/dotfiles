@@ -1,4 +1,4 @@
-# /usr/bin/env bash
+#!/usr/bin/env bash
 # vim:ft=sh
 #
 # Copyright (c) 2015 Carsten Zimmermann
