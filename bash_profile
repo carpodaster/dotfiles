@@ -14,7 +14,13 @@ export PS1='\h:\W \u \[\033[0;36m\]$(__git_ps1 "[%s] ")\[\033[0m\]\$ '
 
 # coloured output and better readability on black terminal background
 export LSCOLORS=hefxcxdxbxegedabagacad
-alias ls='ls -G'
+
+uname=$(uname)
+if [ "$uname" = "Linux" ]; then
+  alias ls="ls --color --group-directories-first"
+else
+  alias ls='ls -G'
+fi
 
 # Helper functions for teh lazyness!1
 rgrep() {
