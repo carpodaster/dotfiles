@@ -47,3 +47,8 @@ generate_password() {
 clrswp() {
   find . -name \*.swp -exec rm -rvf $1 {} \;
 }
+
+gemsetisfy() {
+  local gemset=$(basename $(pwd))
+  rvm gemset use 2.2.2@${gemset} --create
+}
