@@ -42,3 +42,8 @@ production_console() {
 generate_password() {
   pwgen -n -c -1 -s -y $1
 }
+
+# Deletes all leftofter Vim .swp files in all subdirectories
+clrswp() {
+  find . -name \*.swp -exec rm -rvf $1 {} \;
+}
