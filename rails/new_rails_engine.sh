@@ -7,6 +7,8 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 engine_name=$1
+engine_opts=$2
+
 rails_version=`rails -v |head -n1 |awk '{print $2}'`
 ruby_version_full=`ruby -v |awk '{print $2}'`
 ruby_version=${ruby_version_full:0:5}
@@ -34,9 +36,9 @@ rails plugin new \
   --skip-test-unit \
   --skip-bundle \
   --skip-spring \
-  --mountable \
   --full \
   --dummy-path=spec/dummy \
+  $engine_opts \
   $engine_name
 
 cd $engine_name
