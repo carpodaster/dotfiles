@@ -18,6 +18,8 @@ export LSCOLORS=hefxcxdxbxegedabagacad
 uname=$(uname)
 if [ "$uname" = "Linux" ]; then
   alias ls="ls --color --group-directories-first"
+elif [ -e `which gls` ]; then
+  alias ls="gls --color --group-directories-first"
 else
   alias ls='ls -G'
 fi
