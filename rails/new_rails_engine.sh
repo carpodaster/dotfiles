@@ -47,6 +47,7 @@ cd $engine_name
 git init .
 git_name=$(git config user.name)
 git_email=$(git config user.email)
+echo 'Gemfile.lock' >> .gitignore
 echo 'spec/dummy/log/*.log' >> .gitignore
 echo 'spec/dummy/tmp/*' >> .gitignore
 
