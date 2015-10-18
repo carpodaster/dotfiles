@@ -123,16 +123,8 @@ function! RSpecCurrent()
   execute("!rspec " . expand("%p") . ":" . line("."))
 endfunction
 
-function! RSpecZeus()
-  execute("!zeus rspec " . expand("%p"))
-endfunction
-
 function! RSpecSpring()
   execute("!spring rspec " . expand("%p"))
-endfunction
-
-function! RSpecZeusLine()
-  execute("!zeus rspec " . expand("%p") . ":" . line("."))
 endfunction
 
 function! RSpecSpringLine()
@@ -145,8 +137,6 @@ map <Leader>t :w\|:!rspec %<CR>
 map <Leader>mt :w\|:!ruby -Itest %<CR>
 
 map <Leader>T :call RSpecCurrent()<CR>
-map <Leader>zr :call RSpecZeus()<CR>
-map <Leader>ZR :call RSpecZeusLine()<CR>
 map <Leader>sr :call RSpecSpring()<CR>
 map <Leader>SR :call RSpecSpringLine()<CR>
 
