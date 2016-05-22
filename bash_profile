@@ -26,9 +26,12 @@ fi
 
 # Helper functions for teh lazyness!1
 rgrep() {
-  directories="app lib spec config"
+  directories="app lib config"
   if [ -d "test" ]; then
     directories="${directories} test"
+  fi
+  if [ -d "spec" ]; then
+    directories="${directories} spec"
   fi
   if [ "$1" == "-l" ]; then
     grep -Rl$3 "$2" $directories $4 $5 $6 $7 $8 |grep -v Binary
