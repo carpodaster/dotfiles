@@ -17,6 +17,7 @@
   follow = log -p --follow --no-merges
   committers = shortlog -nse --no-merges
   undeployed = log production/master..origin/master
+  m = checkout master
 
 [push]
   default = matching
