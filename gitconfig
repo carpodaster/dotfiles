@@ -23,3 +23,4 @@
   default = matching
 [user]
   email = cz@aegisnet.de
+  signingkey = ACC40E55
