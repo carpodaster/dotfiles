@@ -47,6 +47,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'wikitopian/hardmode'
+Plugin 'tpope/vim-projectionist'
 " css
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
@@ -54,6 +55,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'tpope/vim-fugitive'
 " Elixir/Erlang
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'avdgaag/vim-phoenix'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
