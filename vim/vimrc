@@ -115,7 +115,7 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
-autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.es6,*.haml,*.coffee,*.rake,*.md :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.es6,*.haml,*.coffee,*.rake,*.md,*.ex,*.exs,*.eex :call <SID>StripTrailingWhitespaces()
 
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 autocmd BufRead *.es6 set filetype=javascript
