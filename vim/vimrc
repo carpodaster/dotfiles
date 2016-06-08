@@ -143,6 +143,9 @@ map <Leader>T :call RSpecCurrent()<CR>
 map <Leader>sr :call RSpecSpring()<CR>
 map <Leader>SR :call RSpecSpringLine()<CR>
 
+" et, think 'elixir test'
+map <Leader>et :w\|:Mix test %<CR>
+
 let g:rails_projections = {
       \  "app/services/*.rb": {
       \    "command": "service",
