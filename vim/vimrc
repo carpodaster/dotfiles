@@ -123,30 +123,27 @@ autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 autocmd BufRead *.es6 set filetype=javascript
 
 " -------------------------------------------------
-" Ruby TDD related stuff
-function! RSpecCurrent()
-  execute("!rspec " . expand("%p") . ":" . line("."))
-endfunction
-
+" TDD related stuff
 function! RSpecSpring()
   execute("!spring rspec " . expand("%p"))
 endfunction
 
-function! RSpecSpringLine()
-  execute("!spring rspec " . expand("%p") . ":" . line("."))
+function! RunCurrentTestCase(command)
+  execute("!" . a:command . " " . expand("%p") . ":" . line("."))
 endfunction
 
-" TODO: check if it needs to be run with rspec or ruby -Itest
-map <Leader>t :w\|:!rspec %<CR>
-" mt, think 'minitest'
-map <Leader>mt :w\|:!ruby -Itest %<CR>
-
-map <Leader>T :call RSpecCurrent()<CR>
+" TODO Can I infer if spring is available? Is it desired to always run via
+" spring if I could?
 map <Leader>sr :call RSpecSpring()<CR>
-map <Leader>SR :call RSpecSpringLine()<CR>
+map <Leader>SR :call RunCurrentTestCase("spring rspec")<CR>
 
-" et, think 'elixir test'
-map <Leader>et :w\|:Mix test %<CR>
+" Bind t (entire file) and T (current line) to running tests depending on
+" buffer type (eg. minitest, rspec or Mix test
+autocmd BufRead *_test.rb map <Leader>t :w\|:!ruby -Itest %<CR>
+autocmd BufRead *_spec.rb map <Leader>t :w\|:!rspec %<CR>
+autocmd BufRead *_spec.rb map <Leader>T :w\|:call RunCurrentTestCase("rspec")<CR>
+autocmd BufRead *_test.exs map <Leader>t :w\|:!Mix test %<CR>
+autocmd BufRead *_test.exs map <Leader>T :w\|:call RunCurrentTestCase("Mix test")<CR>
 
 let g:rails_projections = {
       \  "app/services/*.rb": {
