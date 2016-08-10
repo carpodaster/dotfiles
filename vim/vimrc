@@ -50,6 +50,8 @@ Plugin 'wikitopian/hardmode'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-dispatch'
+Plugin 'airblade/vim-gitgutter'
 " css
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
