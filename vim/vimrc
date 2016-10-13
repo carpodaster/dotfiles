@@ -124,6 +124,13 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.es6,*.haml,*.coffee,*.rake,*.md,*.ex,*.exs,*.eex :call <SID>StripTrailingWhitespaces()
 
+function! <SID>ArglistAddFrozenStringLiteralMagicComment()
+  set hidden
+  silent argdo 0 | norm O# frozen_string_literal = true
+endfunction
+
+map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
+
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
