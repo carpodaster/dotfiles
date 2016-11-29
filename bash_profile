@@ -62,5 +62,5 @@ clrswp() {
 
 gemsetisfy() {
   local gemset=$(basename $(pwd))
-  rvm gemset use 2.2.2@${gemset} --create
+  rvm gemset use 2.3.1@${gemset} --create
 }
