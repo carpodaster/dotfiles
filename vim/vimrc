@@ -126,6 +126,7 @@ autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.es6,*.haml,*.coffee,*.rake,*.md,*.ex,
 
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 autocmd BufRead *.es6 set filetype=javascript
+autocmd BufRead *.ex,*.exs set filetype=elixir
 
 " -------------------------------------------------
 " TDD related stuff
@@ -147,8 +148,8 @@ map <Leader>SR :call RunCurrentTestCase("spring rspec")<CR>
 autocmd BufRead *_test.rb map <Leader>t :w\|:!ruby -Itest %<CR>
 autocmd BufRead *_spec.rb map <Leader>t :w\|:!rspec %<CR>
 autocmd BufRead *_spec.rb map <Leader>T :w\|:call RunCurrentTestCase("rspec")<CR>
-autocmd BufRead *_test.exs map <Leader>t :w\|:!Mix test %<CR>
-autocmd BufRead *_test.exs map <Leader>T :w\|:call RunCurrentTestCase("Mix test")<CR>
+autocmd BufRead *_test.exs map <Leader>t :w\|:!mix test %<CR>
+autocmd BufRead *_test.exs map <Leader>T :w\|:call RunCurrentTestCase("mix test")<CR>
 
 let g:rails_projections = {
       \  "app/services/*.rb": {
