@@ -161,7 +161,7 @@ autocmd BufRead *_test.exs map <Leader>T :w\|:call RunCurrentTestCase("mix test"
 let g:rails_projections = {
       \  "app/services/*.rb": {
       \    "command": "service",
-      \    "template": "class %S\nend",
+      \    "template": "# frozen_string_literal: true\nclass %S\nend",
       \    "test": [ "spec/services/%s_spec.rb" ],
       \    "alternate": "spec/services/%s_spec.rb" ,
       \    "affinity": "model"
@@ -169,14 +169,14 @@ let g:rails_projections = {
       \  "app/middleware/*.rb": {
       \    "command": "middleware",
       \    "template":
-      \      "class %S < Struct.new(:app)\n\n  def call(env)\n    app.call(env)\n  end\n\nend",
+      \      "# frozen_string_literal: true\nclass %S < Struct.new(:app)\n\n  def call(env)\n    app.call(env)\n  end\n\nend",
       \      "test": [
       \        "spec/middleware/%s_spec.rb"
       \      ]
       \  },
       \  "app/presenters/*.rb": {
       \    "command": "presenter",
-      \    "template": "class %S < BasePresenter\nend",
+      \    "template": "# frozen_string_literal: true\nclass %S < BasePresenter\nend",
       \    "test": [ "spec/presenters/%s_spec.rb" ],
       \    "affinity": "model"
       \  },
@@ -184,7 +184,7 @@ let g:rails_projections = {
       \  "spec/services/*_spec.rb": {
       \    "command": "servicetest",
       \    "template":
-      \      "RSpec.describe %S do\n\n  describe \"its constructor\" do\n    pending 'FIXME: implement this example'\n  end\n\nend",
+      \      "# frozen_string_literal: true\nRSpec.describe %S do\n\n  describe \"its constructor\" do\n    pending 'FIXME: implement this example'\n  end\n\nend",
       \    "alternate": "app/services/%s.rb",
       \    "keywords": "describe context subject skip pending"
       \  }
