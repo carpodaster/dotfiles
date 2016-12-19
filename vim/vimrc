@@ -158,6 +158,14 @@ autocmd BufRead *_spec.rb map <Leader>T :w\|:call RunCurrentTestCase("rspec")<CR
 autocmd BufRead *_test.exs map <Leader>t :w\|:!mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :w\|:call RunCurrentTestCase("mix test")<CR>
 
+function! ElixirPipeIn()
+  let l = line(".")
+  let c = col(".")
+  execute "norm 0w I|> "
+  execute "norm =="
+  call cursor(l, c)
+endfunction
+
 let g:rails_projections = {
       \  "app/services/*.rb": {
       \    "command": "service",
@@ -204,6 +212,7 @@ map <Leader>h <Esc>:call ToggleHardMode()<CR>
 
 map <Leader>r :w\|:!ruby %<CR>
 map <Leader>gs :Gstatus<CR>
+map <Leader>gp :call ElixirPipeIn()<CR>
 
 " repeat last command for visual selection by pressing .
 xnoremap . :norm.<CR>
