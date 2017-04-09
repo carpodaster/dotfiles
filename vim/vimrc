@@ -126,7 +126,15 @@ autocmd BufWritePre *.rb,*.erb,*.py,*.js,*.es6,*.haml,*.coffee,*.rake,*.md,*.ex,
 
 function! <SID>ArglistAddFrozenStringLiteralMagicComment()
   set hidden
-  silent argdo 0 | norm O# frozen_string_literal = true
+  silent argdo 0 | norm O# frozen_string_literal: true
+endfunction
+
+function! <SID>AddFrozenStringLiteralMagicComment()
+  let l = line(".")
+  let c = col(".")
+  execute "norm gg"
+  execute "norm O# frozen_string_literal: true"
+  call cursor(l+1, c)
 endfunction
 
 map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
@@ -134,6 +142,7 @@ map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
+autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
 
 " -------------------------------------------------
 " TDD related stuff
