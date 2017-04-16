@@ -143,6 +143,7 @@ autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
 autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
+autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
 
 " -------------------------------------------------
 " TDD related stuff
