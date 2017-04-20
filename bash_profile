@@ -13,11 +13,11 @@ fi
 
 __elixir_ps1() {
   if [[ -f "./mix.exs" ]]; then
-    # ex_version=$(kiex list |grep '='|head -n1 |awk -F- '{print $2}')
-    # if [ "$ex_version" != " current" ]; then
-    #   ex_version=""
-    # fi
-    ex_version=$(elixir --version| tail -n1 |awk  '{print $2}')
+    ex_version=$(kiex list |grep '='|head -n1 |awk -F- '{print $2}')
+    if [ "$ex_version" = " current" ]; then
+      ex_version=""
+    fi
+    # ex_version=$(elixir --version| tail -n1 |awk  '{print $2}')
     echo "[Elixir v${ex_version}] "
   fi
 }
