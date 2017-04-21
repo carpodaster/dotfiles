@@ -59,6 +59,15 @@ rgrep() {
   fi
 }
 
+exgrep() {
+  directories="web lib config test"
+  if [ "$1" == "-l" ]; then
+    grep -Rl$3 "$2" $directories $4 $5 $6 $7 $8 |grep -v Binary
+  else
+    grep -R$2  "$1" $directories $3 $4 $5 $6 $7  |grep -v Binary
+  fi
+}
+
 production_console() {
   heroku run rails console -r production
 }
