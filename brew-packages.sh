@@ -5,7 +5,7 @@ brew tap nviennot/tmate && \
 brew install tmate
 
 brew install git vim bash-completion pwgen imagemagick mutt postgres elinks gnupg ffmpeg coreutils \
-  pbzip2
+  pbzip2 ctags
 
 
 echo
