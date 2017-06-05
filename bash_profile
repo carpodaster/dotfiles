@@ -78,7 +78,7 @@ generate_password() {
 
 # Deletes all leftofter Vim .swp files in all subdirectories
 clrswp() {
-  find . -name \*.swp -exec rm -rvf $1 {} \;
+  find . -name \*.sw? -delete
 }
 
 gemsetisfy() {
