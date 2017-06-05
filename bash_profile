@@ -85,3 +85,10 @@ gemsetisfy() {
   local gemset=$(basename $(pwd))
   rvm gemset use 2.3.1@${gemset} --create
 }
+
+export PATH="/usr/local/bin:$PATH"
+
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="/usr/local/sbin:$PATH"
