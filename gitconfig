@@ -18,6 +18,7 @@
   committers = shortlog -nse --no-merges
   undeployed = log production/master..origin/master
   m = checkout master
+  p = pull --rebase
 
 [push]
   default = matching
