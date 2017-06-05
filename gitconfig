@@ -23,5 +23,6 @@
 [push]
   default = matching
 [user]
+  name = Carsten Zimmermann
   email = cz@aegisnet.de
   signingkey = ACC40E55
