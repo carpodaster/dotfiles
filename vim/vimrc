@@ -53,6 +53,10 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-dispatch'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'skywind3000/asyncrun.vim'
+Plugin 'janko-m/vim-test'
 " css
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
@@ -237,3 +241,11 @@ cnoreabbrev <expr> W getcmdtype()==':'&&getcmdline()=~#'^W'?'w':'W'
 
 let g:vim_markdown_folding_level = 3
 let g:vim_markdown_frontmatter = 1
+let g:airline#extensions#tabline#enabled = 0
+" let g:airline#extensions#tabline#show_buffers = 0
+" let g:airline#extensions#tabline#show_tab_type = 1
+" let g:airline#extensions#tabline#show_close_button = 0
+
+set laststatus=2 " For vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "papercolor"
