@@ -154,26 +154,45 @@ autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
 
 " -------------------------------------------------
 " TDD related stuff
-function! RSpecSpring()
-  execute("!spring rspec " . expand("%p"))
+
+function! <SID>RSpecRunner()
+  if !exists("g:rspec_runner#cmd")
+    call <SID>rspec_runner_config()
+  endif
+  execute("AsyncRun -save=1 " . g:rspec_runner#cmd . " " . expand("%p"))
 endfunction
 
 function! RunCurrentTestCase(command)
-  execute("!" . a:command . " " . expand("%p") . ":" . line("."))
+  " Special treatment for Rails' spring:
+  if a:command == "rspec" && exists("g:rspec_runner#cmd")
+    let l:command = g:rspec_runner#cmd
+  else
+    let l:command = a:command
+  end
+  execute("AsyncRun -save=1 " . l:command . " " . expand("%p") . ":" . line("."))
+  copen
 endfunction
 
-" TODO Can I infer if spring is available? Is it desired to always run via
-" spring if I could?
-map <Leader>sr :call RSpecSpring()<CR>
-map <Leader>SR :call RunCurrentTestCase("spring rspec")<CR>
+" Auto-detect spring
+function! <SID>rspec_runner_config()
+  if filereadable('bin/spring')
+    let g:rspec_runner#cmd = 'bin/spring rspec'
+  else
+    let g:rspec_runner#cmd = 'rspec'
+  endif
+endfunction
+autocmd User BufEnterRails call <SID>rspec_runner_config()
 
 " Bind t (entire file) and T (current line) to running tests depending on
-" buffer type (eg. minitest, rspec or Mix test
+" buffer type (eg. minitest, rspec or Mix test).
 autocmd BufRead *_test.rb map <Leader>t :w\|:!ruby -Itest %<CR>
-autocmd BufRead *_spec.rb map <Leader>t :w\|:!rspec %<CR>
-autocmd BufRead *_spec.rb map <Leader>T :w\|:call RunCurrentTestCase("rspec")<CR>
-autocmd BufRead *_test.exs map <Leader>t :w\|:!mix test %<CR>
-autocmd BufRead *_test.exs map <Leader>T :w\|:call RunCurrentTestCase("mix test")<CR>
+autocmd BufRead *_spec.rb map <Leader>t :call <SID>RSpecRunner()<CR>
+autocmd BufRead *_spec.rb map <Leader>tt :w\|:!rspec %<CR>
+autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("rspec")<CR>
+autocmd BufRead *_test.exs map <Leader>t :AsyncRun mix test %<CR>
+autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
+autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
+" autocmd BufRead *_test.exs map <Leader>tt :TestFile<CR>
 
 function! ElixirPipeIn()
   let l = line(".")
@@ -225,6 +244,17 @@ hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
 
+au BufReadPost quickfix  setlocal modifiable
+      \ | hi TestOk  ctermfg=green
+      \ | hi TestErr ctermfg=red
+      \ | syn match TestOk  "0 failures"
+      \ | syn match TestErr "\([1-9]\+\|[0-9]\*\) failure[s]\?"
+      \ | silent exe 'g/^/s//\=line(".")." "/'
+      \ | setlocal nomodifiable
+
+" Close qf with a simple q
+au FileType qf map q :cclose<CR>
+
 map <Leader>h <Esc>:call ToggleHardMode()<CR>
 
 map <Leader>r :w\|:!ruby %<CR>
@@ -246,6 +276,8 @@ let g:airline#extensions#tabline#enabled = 0
 " let g:airline#extensions#tabline#show_buffers = 0
 " let g:airline#extensions#tabline#show_tab_type = 1
 " let g:airline#extensions#tabline#show_close_button = 0
+let g:airline_section_error = airline#section#create_left(['%{g:asyncrun_status}'])
+let g:asyncrun_exit = "if g:asyncrun_code != 0 | copen | endif"
 
 set laststatus=2 " For vim-airline
 let g:airline_powerline_fonts = 1
