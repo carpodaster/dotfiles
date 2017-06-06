@@ -250,3 +250,6 @@ let g:airline#extensions#tabline#enabled = 0
 set laststatus=2 " For vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "papercolor"
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#syntastic#enabled = 1
