@@ -86,6 +86,7 @@ set nobackup
 syntax enable
 
 set wildmenu
+set path+=**
 
 " Formatting (some of these are for coding in C and C++)
 set ts=2  " Tabs are 2 spaces
