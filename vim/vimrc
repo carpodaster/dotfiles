@@ -253,7 +253,7 @@ au BufReadPost quickfix  setlocal modifiable
       \ | setlocal nomodifiable
 
 " Close qf with a simple q
-au FileType qf map q :cclose<CR>
+autocmd FileType qf map <buffer> q :cclose<CR>
 
 map <Leader>h <Esc>:call ToggleHardMode()<CR>
 
