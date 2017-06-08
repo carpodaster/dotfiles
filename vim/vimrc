@@ -230,6 +230,14 @@ let g:rails_projections = {
       \      "# frozen_string_literal: true\nRSpec.describe %S do\n\n  describe \"its constructor\" do\n    pending 'FIXME: implement this example'\n  end\n\nend",
       \    "alternate": "app/services/%s.rb",
       \    "keywords": "describe context subject skip pending"
+      \  },
+      \  "spec/support/shared_examples/*.rb": {
+      \    "command": "sharedexample",
+      \    "template": "# frozen_string_literal: true\nRSpec.shared_examples_for '{blank}' do\nend"
+      \  },
+      \  "spec/support/shared_contexts/*.rb": {
+      \    "command": "sharedcontext",
+      \    "template": "# frozen_string_literal: true\nRSpec.shared_context '{blank}' do\nend"
       \  }
       \}
 
