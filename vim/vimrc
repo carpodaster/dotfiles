@@ -204,31 +204,31 @@ endfunction
 let g:rails_projections = {
       \  "app/services/*.rb": {
       \    "command": "service",
-      \    "template": "# frozen_string_literal: true\nclass %S\nend",
-      \    "test": [ "spec/services/%s_spec.rb" ],
-      \    "alternate": "spec/services/%s_spec.rb" ,
+      \    "template": "# frozen_string_literal: true\nclass {camelcase|capitalize|colons}\nend",
+      \    "test": [ "spec/services/{}_spec.rb" ],
+      \    "alternate": "spec/services/{}_spec.rb" ,
       \    "affinity": "model"
       \  },
       \  "app/middleware/*.rb": {
       \    "command": "middleware",
       \    "template":
-      \      "# frozen_string_literal: true\nclass %S < Struct.new(:app)\n\n  def call(env)\n    app.call(env)\n  end\n\nend",
+      \      "# frozen_string_literal: true\nclass {camelcase|capitalize|colons} < Struct.new(:app)\n\n  def call(env)\n    app.call(env)\n  end\n\nend",
       \      "test": [
-      \        "spec/middleware/%s_spec.rb"
+      \        "spec/middleware/{}_spec.rb"
       \      ]
       \  },
       \  "app/presenters/*.rb": {
       \    "command": "presenter",
-      \    "template": "# frozen_string_literal: true\nclass %S < BasePresenter\nend",
-      \    "test": [ "spec/presenters/%s_spec.rb" ],
+      \    "template": "# frozen_string_literal: true\nclass {camelcase|capitalize|colons} < BasePresenter\nend",
+      \    "test": [ "spec/presenters/{}_spec.rb" ],
       \    "affinity": "model"
       \  },
       \  "lib/base_presenter.rb": {"command": "presenter"},
       \  "spec/services/*_spec.rb": {
       \    "command": "servicetest",
       \    "template":
-      \      "# frozen_string_literal: true\nRSpec.describe %S do\n\n  describe \"its constructor\" do\n    pending 'FIXME: implement this example'\n  end\n\nend",
-      \    "alternate": "app/services/%s.rb",
+      \      "# frozen_string_literal: true\nRSpec.describe {camelcase|capitalize|colons} do\n\n  describe 'its constructor' do\n    pending 'FIXME: implement this example'\n  end\n\nend",
+      \    "alternate": "app/services/{}.rb",
       \    "keywords": "describe context subject skip pending"
       \  },
       \  "spec/support/shared_examples/*.rb": {
