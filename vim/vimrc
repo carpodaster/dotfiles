@@ -1,3 +1,6 @@
+" vim:fdm=marker
+
+" Platform specific configuration {{{
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
@@ -5,30 +8,36 @@ if $_system_name == 'Debian'
   set t_Co=256
 endif
 
-" ------------------------------------------
-" Setting up NeoBundle
-" ------------------------------------------
-
-set nocompatible " be iMproved
-
-if has('vim_starting')
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-"-------------------------------------------
- 
 if has("gui_macvim")
   set guioptions-=T "if using a GUI Version
 endif
 
-" set the runtime path to include Vundle and initialize
+" OS X has modelines disabled by default?
+set modelines=5
+" }}}
+
+" Basic Vim configuration {{{
+filetype on  " Automatically detect file types.
+set nocompatible
+set nobackup
+syntax enable
+set wildmenu
+
+if has("autocmd")
+  filetype indent on
+endif
+
+let mapleader = ","
+" }}}
+
+" Plugins: BEGIN DEFINITION {{{
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+" }}}
 
-" Rails related
+" Plugins: Rails related {{{
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'thoughtbot/vim-rspec'
@@ -39,15 +48,18 @@ Plugin 'slim-template/vim-slim.git'
 Plugin 'tpope/vim-endwise'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'ecomba/vim-ruby-refactoring'
-" Workflow
-Plugin 'roman/golden-ratio'
+Plugin 'ngmy/vim-rubocop'
+" }}}
+
+" Plugins: General or workflow related {{{
+Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'roman/golden-ratio'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'wikitopian/hardmode'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-speeddating'
@@ -57,62 +69,45 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'janko-m/vim-test'
-" css
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-" GIT
-Plugin 'tpope/vim-fugitive'
-" Elixir/Erlang
+Plugin 'joker1007/vim-ruby-heredoc-syntax'
+" }}}
+
+" Plugins: Elixir/Erlang related {{{
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'avdgaag/vim-phoenix'
+" }}}
 
+" Plugins: Other languages {{{
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'groenewege/vim-less'
 Plugin 'rhysd/vim-crystal'
+" }}}
 
+" Plugins: END DEFINITION {{{
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 filetype plugin indent on " required!
+" }}}
 
-" -----------------------
-" BASIC VIM CONFIGURATION
-" -----------------------
-
-" Plugins used:
-" rails, autoclose, endwise
-
-filetype on  " Automatically detect file types.
-set nocompatible
-set nobackup
-syntax enable
-
-set wildmenu
-
-" Formatting (some of these are for coding in C and C++)
+" Formatting and indentation {{{
 set ts=2  " Tabs are 2 spaces
 set bs=2  " Backspace over everything in insert mode
+set si " smartindent (local to buffer)
+set ai " Automatically set the indent of a new line (local to buffer)
 set shiftwidth=2  " Tabs under smart indent
-set autoindent
 set smarttab
 set expandtab
 set nocp incsearch
 set cinwords=if,else,while,do,for,switch,case
 
-set ruler  " Ruler on
-set nu  " Line numbers on
-set nowrap  " Line wrapping off
-
-" Visual
+set ruler      " Ruler on
+set nu         " Line numbers on
+set nowrap     " Line wrapping off
 set showmatch  " Show matching brackets.
+" }}}
 
-set ai " Automatically set the indent of a new line (local to buffer)
-set si " smartindent (local to buffer)
-
-if has("autocmd")
-  filetype indent on
-endif
-
-let mapleader = ","
-
+" Custom functions {{{
 " http://stackoverflow.com/questions/1327978/sorting-words-not-lines-in-vim
 vnoremap <Leader>sl d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
 
@@ -143,15 +138,14 @@ function! <SID>AddFrozenStringLiteralMagicComment()
   call cursor(l+1, c)
 endfunction
 
-map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
+function! ElixirPipeIn()
+  let l = line(".")
+  let c = col(".")
+  execute "norm 0w I|> "
+  execute "norm =="
+  call cursor(l, c)
+endfunction
 
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
-autocmd BufRead *.es6 set filetype=javascript
-autocmd BufRead *.ex,*.exs set filetype=elixir
-autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
-autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
-
-" -------------------------------------------------
 " TDD related stuff
 
 function! <SID>RSpecRunner()
@@ -181,6 +175,17 @@ function! <SID>rspec_runner_config()
   endif
 endfunction
 autocmd User BufEnterRails call <SID>rspec_runner_config()
+" }}}
+
+map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
+
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
+autocmd BufRead *.es6 set filetype=javascript
+autocmd BufRead *.ex,*.exs set filetype=elixir
+autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
+autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
+
+" -------------------------------------------------
 
 " Bind t (entire file) and T (current line) to running tests depending on
 " buffer type (eg. minitest, rspec or Mix test).
@@ -191,16 +196,8 @@ autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("rspec")<CR>
 autocmd BufRead *_test.exs map <Leader>t :AsyncRun mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
-" autocmd BufRead *_test.exs map <Leader>tt :TestFile<CR>
 
-function! ElixirPipeIn()
-  let l = line(".")
-  let c = col(".")
-  execute "norm 0w I|> "
-  execute "norm =="
-  call cursor(l, c)
-endfunction
-
+" Projections: Rails {{{
 let g:rails_projections = {
       \  "app/services/*.rb": {
       \    "command": "service",
@@ -240,9 +237,9 @@ let g:rails_projections = {
       \    "template": "# frozen_string_literal: true\nRSpec.shared_context '{blank}' do\nend"
       \  }
       \}
+" }}}
 
-" -------------------------------------------------
-
+" Colorscheme {{{
 " TODO move customisation into carpschool colorscheme
 colorscheme carpschool
 set colorcolumn=233
@@ -255,14 +252,13 @@ au BufReadPost quickfix  setlocal modifiable
       \ | hi TestOk  ctermfg=green
       \ | hi TestErr ctermfg=red
       \ | syn match TestOk  "0 failures"
-      \ | syn match TestErr "\([1-9]\+\|[0-9]\*\) failure[s]\?"
+      \ | syn match TestErr "\([1-9]\+\|[0-9]\*\) \(failure|error\)[s]\?"
       \ | silent exe 'g/^/s//\=line(".")." "/'
       \ | setlocal nomodifiable
+" }}}
 
 " Close qf with a simple q
 autocmd FileType qf map <buffer> q :cclose<CR>
-
-map <Leader>h <Esc>:call ToggleHardMode()<CR>
 
 map <Leader>r :w\|:!ruby %<CR>
 map <Leader>gs :Gstatus<CR>
@@ -270,9 +266,6 @@ map <Leader>gp :call ElixirPipeIn()<CR>
 
 " repeat last command for visual selection by pressing .
 xnoremap . :norm.<CR>
-
-" OS X has modelines disabled by default?
-set modelines=5
 
 " I keep typing :W when I meant :w
 cnoreabbrev <expr> W getcmdtype()==':'&&getcmdline()=~#'^W'?'w':'W'
