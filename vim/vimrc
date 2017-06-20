@@ -202,6 +202,8 @@ autocmd FileType tex setlocal makeprg=pdflatex\ --shell-escape\ '%'\ 1>/dev/null
 
 " Pass visual selection to grepprg
 vnoremap <C-f> y:grep <C-R>0<CR>
+" TODO: check if test/ or spec/ exist
+autocmd User BufEnterRails set grepprg=git\ grep\ -I\ -n\ --untracked\ '$*'\ --\ app/\ lib/\ config/\ spec/
 
 " Projections: Rails {{{
 let g:rails_projections = {
