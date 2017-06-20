@@ -197,6 +197,9 @@ autocmd BufRead *_test.exs map <Leader>t :AsyncRun mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
 
+" TODO: check system env and call open or xdg-open on generated pdf
+autocmd FileType tex setlocal makeprg=pdflatex\ --shell-escape\ '%'\ 1>/dev/null\ &&\ rm\ *.aux\ *.log
+
 " Projections: Rails {{{
 let g:rails_projections = {
       \  "app/services/*.rb": {
@@ -263,6 +266,7 @@ autocmd FileType qf map <buffer> q :cclose<CR>
 map <Leader>r :w\|:!ruby %<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gp :call ElixirPipeIn()<CR>
+map <Leader>m :make<CR>
 
 " repeat last command for visual selection by pressing .
 xnoremap . :norm.<CR>
