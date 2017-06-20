@@ -1,3 +1,5 @@
+# vim:ft=sh:fdm=marker
+
 ###  tab completion stuff
 
 # `brew install git-completion` first
@@ -45,6 +47,7 @@ fi
 
 # Helper functions for teh lazyness!1
 rgrep() {
+  # {{{
   directories="app lib config"
   if [ -d "test" ]; then
     directories="${directories} test"
@@ -57,16 +60,48 @@ rgrep() {
   else
     grep -R$2  "$1" $directories $3 $4 $5 $6 $7  |grep -v Binary
   fi
-}
+} # }}}
 
 exgrep() {
+  # {{{
   directories="web lib config test"
   if [ "$1" == "-l" ]; then
     grep -Rl$3 "$2" $directories $4 $5 $6 $7 $8 |grep -v Binary
   else
     grep -R$2  "$1" $directories $3 $4 $5 $6 $7  |grep -v Binary
   fi
+} # }}}
+
+# Open the GH project page, based upon:
+# https://dev.to/shayde/open-the-github-project-page-of-a-repo-from-terminal
+function GitHub()
+{ # {{{
+  if [ ! -d .git ]
+  then
+    echo "E: This isn't a git directory"
+    return 1
+  fi
+
+  git_url=`git config --get remote.origin.url`
+  if [[ $git_url = https://github* ]] 
+  then 
+    url=${git_url%.git}
+  fi
+
+  if [[ $git_url = git@github* ]] 
+  then
+    git_url=$(echo $git_url | sed -e s/git@/https:\\/\\// -e s/\\.com:/\\.com\\//)
+    url=${git_url%.git}
+  fi
+
+  if [ "$url" = "" ]
+  then
+    echo "E: Remote origin is invalid"
+    return 1
+  fi
+  xdg-open $url
 }
+alias github=GitHub # }}}
 
 production_console() {
   heroku run rails console -r production
