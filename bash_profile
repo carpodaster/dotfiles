@@ -103,6 +103,8 @@ function GitHub()
 }
 alias github=GitHub # }}}
 
+alias prettyjson='python -m json.tool'
+
 production_console() {
   heroku run rails console -r production
 }
