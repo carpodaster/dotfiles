@@ -22,6 +22,7 @@ set nocompatible
 set nobackup
 syntax enable
 set wildmenu
+set colorcolumn=107  " display ruler at column n
 
 if has("autocmd")
   filetype indent on
