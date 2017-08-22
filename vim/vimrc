@@ -71,6 +71,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'joker1007/vim-ruby-heredoc-syntax'
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
 " }}}
 
 " Plugins: Elixir/Erlang related {{{
