@@ -22,7 +22,6 @@ set nocompatible
 set nobackup
 syntax enable
 set wildmenu
-set colorcolumn=107  " display ruler at column n
 
 if has("autocmd")
   filetype indent on
@@ -254,7 +253,7 @@ let g:rails_projections = {
 " Colorscheme {{{
 " TODO move customisation into carpschool colorscheme
 colorscheme carpschool
-set colorcolumn=233
+set colorcolumn=107
 hi ColorColumn ctermfg=NONE ctermbg=234 cterm=NONE
 hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
