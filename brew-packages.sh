@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 
-brew update             && \
-brew tap nviennot/tmate && \
-brew install tmate
-
 brew install git vim bash-completion pwgen imagemagick mutt postgres elinks gnupg ffmpeg coreutils \
-  pbzip2 ctags
+  pbzip2 ctags bash htop elixir heroku jq
 
 
 echo
 echo Postinstall:
 echo
-echo ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-echo launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+echo brew services start postgresql
 echo 

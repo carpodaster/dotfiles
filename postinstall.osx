@@ -1,7 +1,20 @@
-# TODO: Do I still need this?
-sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
-
 # Provide a common interface between Debian and Mac OS
-ln -s /usr/bin/open /usr/local/bin/xdg-open
+ln -sv /usr/bin/open /usr/local/bin/xdg-open
+
+ln -sv ~/Development/dotfiles/gitconfig ~/.gitconfig
+ln -sv ~/Development/dotfiles/gitignore ~/.gitignore
+ln -sv ~/Development/dotfiles/gemrc ~/.gemrc
+
+# Vim
+mkdir -p ~/.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+ln -sv ~/Development/dotfiles/vim/colors ~/.vim/
+ln -sv ~/Development/dotfiles/vim/vimrc ~/.vim/vimrc
+
+# Ruby
+\curl -sSL https://get.rvm.io | bash -s stable
+
+# Elixir
+\curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 
 # vim:ft=sh
