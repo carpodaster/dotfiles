@@ -22,6 +22,8 @@ set nocompatible
 set nobackup
 syntax enable
 set wildmenu
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
 
 if has("autocmd")
   filetype indent on
