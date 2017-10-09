@@ -24,6 +24,7 @@ syntax enable
 set wildmenu
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
+set mouse=a " enable mouse support
 
 if has("autocmd")
   filetype indent on
