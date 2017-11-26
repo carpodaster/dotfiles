@@ -123,6 +123,8 @@ gemsetisfy() {
   rvm gemset use 2.3.1@${gemset} --create
 }
 
+export GPG_TTY=$(tty)
+
 export PATH="/usr/local/bin:$PATH"
 
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
