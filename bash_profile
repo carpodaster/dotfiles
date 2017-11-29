@@ -125,6 +125,9 @@ gemsetisfy() {
 
 export GPG_TTY=$(tty)
 
+# Command history in iex
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 export PATH="/usr/local/bin:$PATH"
 
 test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
