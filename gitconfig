@@ -9,6 +9,7 @@
   co = checkout
   df = diff
   dc = diff --cached
+  fix = commit --amend --reuse-message=HEAD
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
@@ -19,6 +20,7 @@
   undeployed = log production/master..origin/master
   m = checkout master
   p = pull --rebase
+  vanity = "!v() { git log --pretty=oneline --author=\"$(git config user.name)\" --abbrev-commit --no-merges; }; v;"
 
 [push]
   default = matching
