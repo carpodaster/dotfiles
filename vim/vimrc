@@ -33,6 +33,8 @@ endif
 let mapleader = ","
 " }}}
 
+set list listchars=tab:»·,trail:·,nbsp:·
+
 " Plugins: BEGIN DEFINITION {{{
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -205,6 +207,7 @@ autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("rspec")<CR>
 autocmd BufRead *_test.exs map <Leader>t :AsyncRun mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
+autocmd FileType qf setlocal list listchars=
 
 " TODO: check system env and call open or xdg-open on generated pdf
 autocmd FileType tex setlocal makeprg=pdflatex\ --shell-escape\ '%'\ 1>/dev/null\ &&\ rm\ *.aux\ *.log
