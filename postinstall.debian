@@ -12,29 +12,30 @@ EOF
 sudo apt-get update
 
 sudo apt-get install \
-	build-essential \
-	git-core \
-	vim \
-	chromium \
-	pwgen \
-	imagemagick \
-	mutt \
-	gnupg \
-	elinks \
-	curl \
-	ca-certificates \
-	postgresql-9.4 \
+  build-essential \
+  git-core \
+  vim \
+  chromium \
+  pwgen \
+  imagemagick \
+  mutt \
+  gnupg \
+  elinks \
+  curl \
+  ca-certificates \
+  postgresql-9.4 \
   postgresql-contrib-9.4 \
-	libpq-dev \
-	kismet \
-	keepassx \
+  libpq-dev \
+  kismet \
+  keepassx \
   libv8-dev \
   libcurl4-openssl-dev \
   htop \
   mysql-server \
   libmysqlclient-dev \
   ctags \
-  texlive-latex-extra texlive-lang-german
+  texlive-latex-extra texlive-lang-german \
+  libnotify-bin
 
 # RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -49,3 +50,4 @@ sudo apt-get install -y pkg-config libtool libevent-dev libncurses-dev zlib1g-de
   ./autogen.sh && ./configure && make && sudo make install ; \
   cd $cwd
 
+# vim:ft=sh
