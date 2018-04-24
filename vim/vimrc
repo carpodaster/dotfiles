@@ -212,6 +212,7 @@ autocmd FileType qf setlocal list listchars=
 " TODO: check system env and call open or xdg-open on generated pdf
 autocmd FileType tex setlocal makeprg=pdflatex\ --shell-escape\ '%'\ 1>/dev/null\ &&\ rm\ *.aux\ *.log
 autocmd FileType json setlocal equalprg=python\ -m\ json.tool
+autocmd BufRead mix.exs setlocal makeprg=mix\ deps.get
 
 " Pass visual selection to grepprg
 vnoremap <C-f> y:grep <C-R>0<CR>
