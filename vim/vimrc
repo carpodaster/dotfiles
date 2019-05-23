@@ -188,7 +188,7 @@ autocmd User BufEnterRails call <SID>rspec_runner_config()
 
 map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
 
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
 autocmd BufWritePost *.ex,*.exs Neomake
