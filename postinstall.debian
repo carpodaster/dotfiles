@@ -34,7 +34,7 @@ sudo apt-get install \
   mysql-server \
   libmysqlclient-dev \
   ctags \
-  texlive-latex-extra texlive-lang-german \
+  texlive-latex-extra texlive-lang-german texlive-lang-cyrillic texlive-fonts-extra texlive-fonts-recommended \
   libnotify-bin \
   shunit2 \
   libreadline-dev \
