@@ -149,7 +149,8 @@ function! <SID>AddFrozenStringLiteralMagicComment()
   let c = col(".")
   execute "norm gg"
   execute "norm O# frozen_string_literal: true"
-  call cursor(l+1, c)
+  execute "norm o"
+  call cursor(l+2, c)
 endfunction
 
 function! ElixirPipeIn()
