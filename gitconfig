@@ -31,6 +31,8 @@
 [user]
   name = Carsten Zimmermann
   email = cz@aegisnet.de
-  signingkey = ACC40E55
+  signingkey = B527FFAA84D9324013EB217800D3C613ACC40E55
+[log]
+  showSignature = false
 [diff]
   colorMoved = true
