@@ -95,6 +95,7 @@ Plugin 'avdgaag/vim-phoenix'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
 Plugin 'rhysd/vim-crystal'
+Plugin 'tpope/vim-fireplace' " clojure REPL support
 " }}}
 
 " Plugins: END DEFINITION {{{
