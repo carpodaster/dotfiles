@@ -2,6 +2,10 @@
   excludesfile = ~/.gitignore
 [color]
   ui = auto
+[color "grep"]
+  linenumber = green
+  match = red bold
+  filename = magenta
 [alias]
   st = status
   ci = commit
@@ -28,3 +32,5 @@
   name = Carsten Zimmermann
   email = cz@aegisnet.de
   signingkey = ACC40E55
+[diff]
+  colorMoved = true
