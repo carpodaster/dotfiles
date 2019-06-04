@@ -197,10 +197,14 @@ map <Leader>afs :call <SID>ArglistAddFrozenStringLiteralMagicComment()<CR>
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
+autocmd BufRead *.eex set filetype=eelixir
 autocmd BufWritePost *.ex,*.exs Neomake
 autocmd BufRead Vagrantfile set filetype=ruby
 autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
 autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
+autocmd BufRead mix.exs setlocal makeprg=mix\ deps.get
+autocmd BufNewFile *.rb 0r ~/Development/dotfiles/vim/skel/skeleton-ruby.rb
+autocmd BufNewFile *_spec.rb 2r ~/Development/dotfiles/vim/skel/skeleton-rspec.rb | execute "normal /ClassName/\n" | execute "normal viw"
 
 " -------------------------------------------------
 
@@ -224,7 +228,7 @@ autocmd BufRead mix.exs setlocal makeprg=mix\ deps.get
 " Pass visual selection to grepprg
 vnoremap <C-f> y:grep <C-R>0<CR>
 " TODO: check if test/ or spec/ exist
-autocmd User BufEnterRails set grepprg=git\ grep\ -I\ -n\ --untracked\ '$*'\ --\ app/\ lib/\ config/\ spec/
+autocmd User BufEnterRails setlocal grepprg=git\ grep\ -I\ -n\ --untracked\ '$*'\ --\ app/\ lib/\ config/\ spec/
 
 " The Silver Searcher
 if executable('ag')
@@ -281,6 +285,11 @@ let g:rails_projections = {
       \  "spec/support/shared_contexts/*.rb": {
       \    "command": "sharedcontext",
       \    "template": "# frozen_string_literal: true\nRSpec.shared_context '{blank}' do\nend"
+      \  },
+      \  "app/components/*_controller.rb": {
+      \    "affinity": "controller",
+      \    "rubyAction": "before_action skip_before_action rescue_from head render",
+      \    "rubyHelper": "params"
       \  }
       \}
 " }}}
