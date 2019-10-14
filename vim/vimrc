@@ -250,6 +250,8 @@ if executable('ag')
   endif
 endif
 
+command! Gfollow :Git follow %
+
 " Projections: Rails {{{
 let g:rails_projections = {
       \  "app/services/*.rb": {
