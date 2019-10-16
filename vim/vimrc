@@ -327,6 +327,7 @@ map <Leader>r :w\|:!ruby %<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gp :call ElixirPipeIn()<CR>
 map <Leader>m :make<CR>
+map <Leader>nt :NERDTree<CR>
 
 " repeat last command for visual selection by pressing .
 xnoremap . :norm.<CR>
