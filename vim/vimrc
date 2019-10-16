@@ -359,8 +359,3 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#branch#format = 2
 let g:airline#extensions#syntastic#enabled = 1
-
-" Allow project-specific .vimrcs:
-" https://andrew.stwrt.ca/posts/project-specific-vimrc/
-set exrc
-set secure
