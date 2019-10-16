@@ -98,6 +98,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
 Plugin 'rhysd/vim-crystal'
 Plugin 'tpope/vim-fireplace' " clojure REPL support
+Plugin 'derekwyatt/vim-scala'
 " }}}
 
 " Plugins: END DEFINITION {{{
@@ -201,6 +202,7 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
 autocmd BufRead *.eex set filetype=eelixir
+autocmd BufRead *.cr set filetype=crystal
 autocmd BufWritePost *.ex,*.exs Neomake
 autocmd BufRead Vagrantfile set filetype=ruby
 autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
