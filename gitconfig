@@ -27,6 +27,7 @@
   vanity = "!v() { git log --pretty=oneline --author=\"$(git config user.name)\" --abbrev-commit --no-merges; }; v;"
   changed-files = diff --name-only master
   rubostage = "!v() { rubocop $(git diff --name-only --staged); };v;"
+  cleanup = "!v() { git fetch -p && git branch --merged master | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d; }; v;"
 
 [push]
   default = matching
