@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+ln -sv ~/Development/dotfiles/gitconfig ~/.gitconfig
+ln -sv ~/Development/dotfiles/gitignore ~/.gitignore
+ln -sv ~/Development/dotfiles/gemrc ~/.gemrc
+
+# Vim
+mkdir -p ~/.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+ln -sv ~/Development/dotfiles/vim/colors ~/.vim/
+ln -sv ~/Development/dotfiles/vim/vimrc ~/.vim/vimrc
+
 # Version manager: https://asdf-vm.com/#/core-manage-asdf-vm
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
@@ -11,3 +21,11 @@ for lang in "elixir nodejs ruby erlang"; do
 done
 
 ln -s $(pwd)/asdfrc ~/.asdfrc
+
+# Command line TODO app, requires OS specific installation
+echo "export TODOTXT_DEFAULT_ACTION=ls" >> ~/.bash_profile
+echo "alias t='todo.sh -d /path/to/your/todo.cfg'" >> ~/.bash_profile
+echo "complete -F _todo t" >> ~/.bash_profile
+mkdir ~/.todo
+ln -sv ~/Development/dotfiles/todo.txt.config ~/.todo/config
+

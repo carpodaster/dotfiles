@@ -1,15 +1,5 @@
 # Provide a common interface between Debian and Mac OS
 ln -sv /usr/bin/open /usr/local/bin/xdg-open
 
-ln -sv ~/Development/dotfiles/gitconfig ~/.gitconfig
-ln -sv ~/Development/dotfiles/gitignore ~/.gitignore
-ln -sv ~/Development/dotfiles/gemrc ~/.gemrc
-
-# Vim
-mkdir -p ~/.vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-ln -sv ~/Development/dotfiles/vim/colors ~/.vim/
-ln -sv ~/Development/dotfiles/vim/vimrc ~/.vim/vimrc
-
 
 # vim:ft=sh
