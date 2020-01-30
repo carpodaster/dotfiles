@@ -11,10 +11,5 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln -sv ~/Development/dotfiles/vim/colors ~/.vim/
 ln -sv ~/Development/dotfiles/vim/vimrc ~/.vim/vimrc
 
-# Ruby
-\curl -sSL https://get.rvm.io | bash -s stable
-
-# Elixir
-\curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 
 # vim:ft=sh

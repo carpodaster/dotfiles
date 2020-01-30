@@ -15,12 +15,11 @@ fi
 
 __elixir_ps1() {
   if [[ -f "./mix.exs" ]]; then
-    ex_version=$(kiex list |grep '='|head -n1 |awk -F- '{print $2}')
+    ex_version=$(asdf current elixir |awk -F' ' '{print $1}')
     if [ "$ex_version" = " current" ]; then
       ex_version=""
     fi
-    # ex_version=$(elixir --version| tail -n1 |awk  '{print $2}')
-    echo "[Elixir v${ex_version}] "
+    echo "[v${ex_version}] "
   fi
 }
 
@@ -83,12 +82,12 @@ function GitHub()
   fi
 
   git_url=`git config --get remote.origin.url`
-  if [[ $git_url = https://github* ]] 
-  then 
+  if [[ $git_url = https://github* ]]
+  then
     url=${git_url%.git}
   fi
 
-  if [[ $git_url = git@github* ]] 
+  if [[ $git_url = git@github* ]]
   then
     git_url=$(echo $git_url | sed -e s/git@/https:\\/\\// -e s/\\.com:/\\.com\\//)
     url=${git_url%.git}
