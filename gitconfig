@@ -28,6 +28,7 @@
   changed-files = diff --name-only master
   rubostage = "!v() { rubocop $(git diff --name-only --staged); };v;"
   cleanup = "!v() { git fetch -p && git branch --merged master | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d; }; v;"
+  cleanz = cleanup
 
 [push]
   default = matching
