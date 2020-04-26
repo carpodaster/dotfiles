@@ -176,7 +176,7 @@ endfunction
 
 function! RunCurrentTestCase(command)
   " Special treatment for Rails' spring:
-  if a:command == "rspec" && exists("g:rspec_runner#cmd")
+  if a:command == "bundle exec rspec" && exists("g:rspec_runner#cmd")
     let l:command = g:rspec_runner#cmd
   else
     let l:command = a:command
@@ -188,9 +188,9 @@ endfunction
 " Auto-detect spring
 function! <SID>rspec_runner_config()
   if filereadable('bin/spring')
-    let g:rspec_runner#cmd = 'bin/spring rspec'
+    let g:rspec_runner#cmd = 'bundle exec spring rspec'
   else
-    let g:rspec_runner#cmd = 'rspec'
+    let g:rspec_runner#cmd = 'bundle exec rspec'
   endif
 endfunction
 autocmd User BufEnterRails call <SID>rspec_runner_config()
@@ -217,8 +217,8 @@ autocmd BufNewFile *_spec.rb 2r ~/Development/dotfiles/vim/skel/skeleton-rspec.r
 " buffer type (eg. minitest, rspec or Mix test).
 autocmd BufRead *_test.rb map <Leader>t :w\|:!ruby -Itest %<CR>
 autocmd BufRead *_spec.rb map <Leader>t :call <SID>RSpecRunner()<CR>
-autocmd BufRead *_spec.rb map <Leader>tt :w\|:!rspec %<CR>
-autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("rspec")<CR>
+autocmd BufRead *_spec.rb map <Leader>tt :w\|:!bundle exec rspec %<CR>
+autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("bundle exec rspec")<CR>
 autocmd BufRead *_test.exs map <Leader>t :AsyncRun mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
