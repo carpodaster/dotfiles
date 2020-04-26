@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# vim:ft=bash
+
+# The Basic TeX installation for macOS http://www.tug.org/mactex/morepackages.html
+# required installing these packages:
+
+packages="g-brief xcharter cyrillic ly1 flowfram xfor enumitem"
+for pkg in $packages; do
+  sudo tlmgr Install $pkg
+done
