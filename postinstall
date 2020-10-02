@@ -16,7 +16,7 @@ echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
 
 . $HOME/.asdf/asdf.sh
-for lang in "elixir nodejs ruby erlang"; do
+for lang in elixir nodejs ruby erlang; do
   asdf plugin-add $lang
 done
 
