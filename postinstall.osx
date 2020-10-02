@@ -1,5 +1,11 @@
 # Provide a common interface between Debian and Mac OS
 ln -sv /usr/bin/open /usr/local/bin/xdg-open
 
+# Change default shell from zsh (since Catalina) back to bash
+chsh -s /bin/bash
+
+# Remove annoying warning that zsh is the default now:
+echo export BASH_SILENCE_DEPRECATION_WARNING=1 >> ~/.bash_profile
+
 
 # vim:ft=sh
