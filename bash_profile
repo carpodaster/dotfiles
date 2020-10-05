@@ -2,11 +2,13 @@
 
 ###  tab completion stuff
 
-# `brew install git-completion` first
+# `brew install bash-completion` first
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
-# source ~/Development/dotfiles/git-completion.bash # w/o brew
+
+# Get the __git_ps1 function
+source ~/Development/dotfiles/git-completion.bash # w/o brew
 
 # Tab-expands mix
 if [ -f ~/Development/dotfiles/elixir-completion.bash ]; then
