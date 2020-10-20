@@ -106,10 +106,6 @@ alias github=GitHub # }}}
 
 alias prettyjson='python -m json.tool'
 
-production_console() {
-  heroku run rails console -r production
-}
-
 generate_password() {
   pwgen -n -c -1 -s -y $1
 }
@@ -129,9 +125,4 @@ export GPG_TTY=$(tty)
 # Command history in iex
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export PATH="/usr/local/bin:$PATH"
-
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
