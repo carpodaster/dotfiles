@@ -40,3 +40,5 @@
   showSignature = false
 [diff]
   colorMoved = true
+[pull]
+  ff = only
