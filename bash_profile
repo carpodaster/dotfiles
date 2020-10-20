@@ -25,6 +25,13 @@ __elixir_ps1() {
   fi
 }
 
+# Usage: `gbr feature Holy Cow What A Feature`
+# … will create a branch "feature/holy-cow-what-a-feature"
+gbr() {
+  local branchname=$(echo -n ${@:2}|tr ' ' '-' |tr '[:upper:]' '[:lower:]')
+  git checkout -b "$1/${branchname}"
+}
+
 # git PS1 w/ cyan coloured branch
 # export PS1='\h:\W \u \[\033[0;36m\]$(__git_ps1 "[%s] ")\[\033[0m\]\$ '
 export PS1='\h:\W \u \[\033[38;5;140m\]$(__elixir_ps1)\[\033[0m\]\[\033[0;36m\]$(__git_ps1 "[%s] ")\[\033[0m\]\$ '
