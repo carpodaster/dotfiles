@@ -122,11 +122,6 @@ clrswp() {
   find . -name \*.sw? -delete
 }
 
-gemsetisfy() {
-  local gemset=$(basename $(pwd))
-  rvm gemset use 2.3.1@${gemset} --create
-}
-
 export GPG_TTY=$(tty)
 
 # Command history in iex
