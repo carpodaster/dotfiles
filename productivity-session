@@ -18,11 +18,15 @@ is_not_running() {
   test -z "$process"
 }
 
+xdg-settings set default-web-browser firefox.desktop
+
 if ((day <= 5)); then
-   if [[ $currenttime > $WORKING_HOURS_START ]] && [[ $currenttime < $WORKING_HOURS_END ]]; then
-     for app in $workapps
-     do
-       is_not_running $app && $app 2>&1 1>/dev/null &
-     done
-   fi
+  if [[ $currenttime > $WORKING_HOURS_START ]] && [[ $currenttime < $WORKING_HOURS_END ]]; then
+    xdg-settings set default-web-browser google-chrome.desktop
+
+    for app in $workapps
+    do
+      is_not_running $app && $app 2>&1 1>/dev/null &
+    done
+  fi
 fi
