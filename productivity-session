@@ -5,7 +5,7 @@
 day=$(date +"%u")
 currenttime=$(date +%H:%M)
 
-WORKING_HOURS_START="07:25"
+WORKING_HOURS_START="07:20"
 WORKING_HOURS_END="18:30"
 
 workapps="slack
