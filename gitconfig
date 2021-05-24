@@ -6,6 +6,8 @@
   linenumber = green
   match = red bold
   filename = magenta
+[init]
+  defaultBranch = main
 [alias]
   st = status
   ci = commit
