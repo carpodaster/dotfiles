@@ -40,10 +40,6 @@ sudo apt-get install \
   libreadline-dev \
   colordiff
 
-# RVM
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s stable
-
 # tmate
 cwd=`pwd`
 sudo apt-get install -y pkg-config libtool libevent-dev libncurses-dev zlib1g-dev automake libssh-dev cmake ruby; \
