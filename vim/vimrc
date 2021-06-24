@@ -304,7 +304,7 @@ let g:rails_projections = {
 " Colorscheme {{{
 " TODO move customisation into carpschool colorscheme
 colorscheme carpschool
-set colorcolumn=107
+set colorcolumn=100
 hi ColorColumn ctermfg=NONE ctermbg=234 cterm=NONE
 hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
