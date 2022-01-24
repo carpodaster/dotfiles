@@ -222,7 +222,7 @@ autocmd BufRead *_test.rb map <Leader>t :w\|:!ruby -Itest %<CR>
 autocmd BufRead *_spec.rb map <Leader>t :call <SID>RSpecRunner()<CR>
 autocmd BufRead *_spec.rb map <Leader>tt :w\|:!bundle exec rspec %<CR>
 autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("bundle exec rspec")<CR>
-autocmd BufRead *_test.exs map <Leader>t :AsyncRun mix test %<CR>
+autocmd BufRead *_test.exs map <Leader>t :AsyncRun MIX_ENV=test mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
 autocmd FileType qf setlocal list listchars=
