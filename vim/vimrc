@@ -329,6 +329,7 @@ hi ColorColumn ctermfg=NONE ctermbg=234 cterm=NONE
 hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=LightBlue ctermbg=Black
 hi TabLineSel ctermfg=White ctermbg=Blue
+hi ExtraWhitespace ctermbg=red
 
 au BufReadPost quickfix  setlocal modifiable
       \ | hi TestOk  ctermfg=green
