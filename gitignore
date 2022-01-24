@@ -2,3 +2,4 @@
 tags
 *.swp
 .rake_tasks~
+/.vscode
