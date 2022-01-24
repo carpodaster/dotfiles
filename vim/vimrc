@@ -83,7 +83,9 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'joker1007/vim-ruby-heredoc-syntax'
 Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'neomake/neomake'
 " }}}
 
@@ -237,21 +239,38 @@ vnoremap <C-f> y:grep <C-R>0<CR>
 autocmd User BufEnterRails setlocal grepprg=git\ grep\ -I\ -n\ --untracked\ '$*'\ --\ app/\ lib/\ config/\ spec/
 
 " The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" if executable('ag')
+"   " Use ag over grep
+"   set grepprg=ag\ --nogroup\ --nocolor
+"
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+"
+"   " ag is fast enough that CtrlP doesn't need to cache
+"   let g:ctrlp_use_caching = 1
+"
+"   if !exists(":Ag")
+"     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+"     nnoremap \ :Ag<SPACE>
+"   endif
+" endif
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|deps|_build)'
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --hidden -g "" %s'
+" --------------------------------------
+" FZF
+" 
+"
+" https://tech.serhatteker.com/post/2019-05/vim-fzf-project-root/
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+map <C-p> :ProjectFiles<CR>
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 1
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+" imap <c-x><c-l> <plug>(fzf-complete-line)
 
 command! Gfollow :Git follow %
 
