@@ -80,7 +80,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'janko-m/vim-test'
 Plugin 'joker1007/vim-ruby-heredoc-syntax'
-Plugin 'rking/ag.vim'
+" Plugin 'rking/ag.vim'
 " Plugin 'kien/ctrlp.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -258,12 +258,19 @@ autocmd User BufEnterRails setlocal grepprg=git\ grep\ -I\ -n\ --untracked\ '$*'
 " FZF
 " 
 "
-" https://tech.serhatteker.com/post/2019-05/vim-fzf-project-root/
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+function! s:ag_with_opts(arg, bang)
+  let tokens  = split(a:arg)
+  let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+  let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+  call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '40%'})
 endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
-map <C-p> :ProjectFiles<CR>
+
+autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
+" NOTE: finds files in git only:
+map <C-p> :GFiles<CR>
+" NOTE: overriding PGUP alias in vanilla vim:
+map <C-b> :Buffers<CR>
+map <C-Space> :Ag<CR>
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
