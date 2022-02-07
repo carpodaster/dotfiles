@@ -34,10 +34,8 @@ endif
 
 let mapleader = ","
 
-if $_system_name == 'OSX'
-  " Fix copy/paste on macOS, without doing the `set mouse=` crazyness
-  vnoremap <C-c> "+y
-end
+" Fix copy/paste on terminals, without doing the `set mouse=` crazyness
+vnoremap <C-c> "+y
 " }}}
 
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -349,6 +347,18 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>gp :call ElixirPipeIn()<CR>
 map <Leader>m :make<CR>
 map <Leader>nt :NERDTree<CR>
+
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " repeat last command for visual selection by pressing .
 xnoremap . :norm.<CR>
