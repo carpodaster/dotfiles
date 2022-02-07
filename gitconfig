@@ -23,7 +23,6 @@
   ls = ls-files
   follow = log -p --follow --no-merges
   committers = shortlog -nse --no-merges
-  undeployed = log production/master..origin/master
   m = checkout master
   p = pull --rebase
   vanity = "!v() { git log --pretty=oneline --author=\"$(git config user.name)\" --abbrev-commit --no-merges; }; v;"
