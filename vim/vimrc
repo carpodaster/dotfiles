@@ -84,6 +84,7 @@ Plugin 'joker1007/vim-ruby-heredoc-syntax'
 " Plugin 'kien/ctrlp.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'maxjacobson/vim-fzf-coauthorship'
 Plugin 'neomake/neomake'
 " }}}
 
@@ -210,7 +211,7 @@ autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
 autocmd BufRead mix.exs setlocal makeprg=mix\ deps.get
 autocmd BufNewFile *.rb 0r ~/Development/dotfiles/vim/skel/skeleton-ruby.rb
 autocmd BufNewFile *_spec.rb 2r ~/Development/dotfiles/vim/skel/skeleton-rspec.rb | execute "normal /ClassName/\n" | execute "normal viw"
-autocmd FileType gitcommit map <Leader>cab oCo-authored-by: 
+autocmd FileType gitcommit map <silent> <Leader>cab :Coauthorship<CR>
 
 " -------------------------------------------------
 
