@@ -10,7 +10,6 @@ WORKING_HOURS_END="18:30"
 
 workapps="slack
 google-chrome
-thunderbird
 firefox"
 
 is_not_running() {
