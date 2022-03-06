@@ -205,9 +205,13 @@ autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.ex,*.exs set filetype=elixir
 autocmd BufRead *.eex set filetype=eelixir
 autocmd BufRead *.cr set filetype=crystal
+autocmd BufRead Dockerfile.* set filetype=dockerfile
+autocmd BufRead *.avsc set filetype=json
+autocmd BufRead *.yml.* set filetype=yaml
 autocmd BufWritePost *.ex,*.exs Neomake
 autocmd BufRead Vagrantfile set filetype=ruby
 autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
+autocmd FileType elixir map <Leader>f :!mix format %
 autocmd BufRead mix.exs map <Leader>dg :!mix deps.get<CR>
 autocmd BufRead mix.exs setlocal makeprg=mix\ deps.get
 autocmd BufNewFile *.rb 0r ~/Development/dotfiles/vim/skel/skeleton-ruby.rb
@@ -328,6 +332,18 @@ let g:rails_projections = {
       \  }
       \}
 " }}}
+
+" Projections: general
+let g:projectionist_heuristics = {
+      \ "lib/*.ex": {
+      \   "alternate": "test/{}_test.exs",
+      \   "type": "source"
+      \ },
+      \ "test/*_test.exs": {
+      \   "alternate": "lib/{}.ex",
+      \   "type": "test"
+      \ }}
+
 
 " Colorscheme {{{
 " TODO move customisation into carpschool colorscheme
