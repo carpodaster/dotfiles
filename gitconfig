@@ -18,12 +18,13 @@
   fix = commit --amend --reuse-message=HEAD
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lol2 = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   lala = log --graph --decorate --pretty=format:'\"%C(yellow)%h %Cred%cr %Cgreen[%aN]%C(blue)%d%Creset %s' --abbrev-commit --all
   ls = ls-files
   follow = log -p --follow --no-merges
   committers = shortlog -nse --no-merges
-  m = checkout master
+  m = "!v() { git checkout $(__git_default_branch); }; v;"
   p = pull --rebase
   vanity = "!v() { git log --pretty=oneline --author=\"$(git config user.name)\" --abbrev-commit --no-merges; }; v;"
   changed-files = diff --name-only master
