@@ -392,7 +392,8 @@ xnoremap . :norm.<CR>
 " I keep typing :W when I meant :w
 cnoreabbrev <expr> W getcmdtype()==':'&&getcmdline()=~#'^W'?'w':'W'
 
-let g:vim_markdown_folding_level = 3
+" let g:vim_markdown_folding_level = 3
+let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
