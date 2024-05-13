@@ -3,8 +3,10 @@
 ###  tab completion stuff
 
 # `brew install bash-completion` first
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ "$(uname -o)" != "GNU/Linux" ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 # Get the __git_ps1 function
