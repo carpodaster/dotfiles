@@ -64,7 +64,9 @@ Plugin 'ngmy/vim-rubocop'
 " Plugins: General or workflow related {{{
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
+Plugin 'nvim-tree/nvim-tree.lua'
+Plugin 'nvim-tree/nvim-web-devicons'
 Plugin 'tpope/vim-surround'
 Plugin 'roman/golden-ratio'
 Plugin 'scrooloose/syntastic'
@@ -388,7 +390,7 @@ map <Leader>r :w\|:!ruby %<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gp :call ElixirPipeIn()<CR>
 map <Leader>m :make<CR>
-map <Leader>nt :NERDTree<CR>
+map <Leader>nt :NvimTreeOpen<CR>
 
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
@@ -426,8 +428,10 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
+" let g:airline_symbols.branch = ''
+let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
