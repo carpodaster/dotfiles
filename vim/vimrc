@@ -87,6 +87,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'maxjacobson/vim-fzf-coauthorship'
 Plugin 'neomake/neomake'
 Plugin 'lifepillar/vim-solarized8'
+Plugin 'github/copilot.vim'
 " }}}
 
 " Plugins: Elixir/Erlang related {{{
