@@ -96,7 +96,18 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'avdgaag/vim-phoenix'
 " }}}
 
-" Plugins: Other languages {{{
+" Plugins: JavaScript/TypeScript related {{{
+Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim'
+
+" Plugins: Other languages / language agnostic {{{
+Plugin 'neoclide/coc.nvim'
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
 Plugin 'rhysd/vim-crystal'
@@ -170,6 +181,8 @@ endfunction
 
 " TDD related stuff
 
+let test#strategy = "asyncrun"
+
 function! <SID>RSpecRunner()
   if !exists("g:rspec_runner#cmd")
     call <SID>rspec_runner_config()
@@ -226,8 +239,10 @@ autocmd FileType gitcommit map <silent> <Leader>cab :Coauthorship<CR>
 " buffer type (eg. minitest, rspec or Mix test).
 autocmd BufRead *_test.rb map <Leader>t :w\|:!ruby -Itest %<CR>
 autocmd BufRead *_spec.rb map <Leader>t :call <SID>RSpecRunner()<CR>
+autocmd BufRead *.spec.ts map <Leader>t :TestFile<CR>
 autocmd BufRead *_spec.rb map <Leader>tt :w\|:!bundle exec rspec %<CR>
 autocmd BufRead *_spec.rb map <Leader>T :call RunCurrentTestCase("bundle exec rspec")<CR>
+autocmd BufRead *.spec.ts map <Leader>T :TestNearest<CR>
 autocmd BufRead *_test.exs map <Leader>t :AsyncRun MIX_ENV=test mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>tt :w\|:! mix test %<CR>
 autocmd BufRead *_test.exs map <Leader>T :call RunCurrentTestCase("mix test")<CR>
