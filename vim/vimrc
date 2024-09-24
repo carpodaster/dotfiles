@@ -234,6 +234,7 @@ autocmd BufNewFile *.rb 0r ~/Development/dotfiles/vim/skel/skeleton-ruby.rb
 autocmd BufNewFile *_spec.rb 2r ~/Development/dotfiles/vim/skel/skeleton-rspec.rb | execute "normal /ClassName/\n" | execute "normal viw"
 autocmd BufNewFile *.ex 0r ~/Development/dotfiles/vim/skel/skeleton-elixir.ex | execute "normal /ModuleName/\n" | execute "normal viw"
 autocmd FileType gitcommit map <silent> <Leader>cab :Coauthorship<CR>
+autocmd FileType c set noexpandtab
 
 " -------------------------------------------------
 
