@@ -311,7 +311,8 @@ endfunction
 
 autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
 " NOTE: finds files in git only:
-map <C-p> :GFiles<CR>
+map <Leader>g :GFiles<CR>
+map <C-p> :Files<CR>
 " NOTE: overriding PGUP alias in vanilla vim:
 map <C-b> :Buffers<CR>
 map <C-Space> :Ag<CR>
