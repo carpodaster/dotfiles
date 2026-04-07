@@ -98,10 +98,6 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'avdgaag/vim-phoenix'
 " }}}
 
-" Plugins: JavaScript/TypeScript related {{{
-Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-
 " Plugins: Other languages / language agnostic {{{
 Plugin 'neoclide/coc.nvim'
 " Use <c-space> to trigger completion
@@ -110,8 +106,19 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+" }}}
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'hashivim/vim-terraform'
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Plugins: JavaScript/TypeScript related {{{
+Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim'
+
 " Use :CocInstall coc-tsserver for javascript and typescript support
 let g:coc_global_extensions = ['coc-tsserver']
+autocmd BufRead *.ts map <silent><Leader>l :AsyncRun npx eslint % --ext .ts --fix<CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -148,6 +155,7 @@ set ruler      " Ruler on
 set nu         " Line numbers on
 set nowrap     " Line wrapping off
 set showmatch  " Show matching brackets.
+set signcolumn=yes " Otherwise it will jump around when errors are shown
 " }}}
 
 " Custom functions {{{
@@ -232,7 +240,8 @@ autocmd BufRead *.eex set filetype=eelixir
 autocmd BufRead *.cr set filetype=crystal
 autocmd BufRead Dockerfile.* set filetype=dockerfile
 autocmd BufRead *.avsc set filetype=json
-autocmd BufRead *.yml.* set filetype=yaml
+autocmd BufRead *.tpl set filetype=terraform
+autocmd BufRead *.yml.*,*.yaml.* set filetype=yaml
 autocmd BufWritePost *.ex,*.exs Neomake
 autocmd BufRead Vagrantfile set filetype=ruby
 autocmd FileType ruby map <Leader>fs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
