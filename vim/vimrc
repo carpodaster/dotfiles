@@ -380,7 +380,16 @@ let g:projectionist_heuristics = {
       \ "test/*_test.exs": {
       \   "alternate": "lib/{}.ex",
       \   "type": "test"
-      \ }}
+      \ },
+      \ "src/*.ts": {
+      \   "alternate": "src/{}.spec.ts",
+      \   "type": "source"
+      \ },
+      \ "src/*.spec.ts": {
+      \   "alternate": "src/{}.ts",
+      \   "type": "test"
+      \ }
+      \}
 
 
 " Colorscheme {{{
