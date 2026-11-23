@@ -19,7 +19,7 @@ fi
 
 __elixir_ps1() {
   if [[ -f "./mix.exs" ]]; then
-    ex_version=$(asdf current elixir |awk -F' ' '{print $1}')
+    ex_version=$(asdf current elixir |tail -n 1|awk -F' ' '{print $2}')
     if [ "$ex_version" = " current" ]; then
       ex_version=""
     fi
